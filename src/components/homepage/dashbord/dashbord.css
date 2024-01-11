@@ -1,0 +1,183 @@
+
+table {
+ 
+    grid-row-start: 4;
+    grid-row-end: 5;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    color:hwb(190 62% 13%);
+    border: 3px solid #143d7a;
+  }
+  
+  td, th {
+    
+    text-align: left;
+    padding: 8px;
+    
+  }
+  
+  td{
+    background-color:rgb(247, 247, 247) ;
+    
+  }
+  th{
+    background-color: #84c2db ;
+    
+  }
+  tr{
+    border: 3px solid #2c5ca4;
+  }
+  
+  
+  
+  
+  .col-div-4-2{
+    width: 50px;
+    float: left;
+  }
+  .box-2> div{
+    text-align: center;
+    padding: 0px;
+    margin: 0px;
+  }
+  .box{
+    width: 200px;
+    height: 282px;
+    background-color: #ffffff;
+    margin-left: 10px;
+    padding:60px;
+    box-shadow: 2px 5px 10px #ddd;
+    position: relative;
+  }
+  .box-2{
+    width: 200px;
+    height: 282px;
+    background-color: #ffffff;
+    margin-left:20px;
+    padding:40px;
+    box-shadow: 2px 5px 10px #ddd;
+    position: relative;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+  }
+  .content-box-1{
+    padding: 10px 10px;
+  }
+  .content-box-2{
+    padding: 0px 10px;
+  }
+  .circle-wrap {
+    margin: 50px auto;
+    width: 150px;
+    height: 150px;
+    background: #e6e2e7;
+    border-radius: 50%;
+  }
+  .head-1{
+    font-size:25px!important;
+    margin: 10px 0px;
+        color:  #3E8DA8;
+        text-align: center;
+        font-family:Georgia, 'Times New Roman', Times, serif;
+  
+  }
+  .head-2{
+    font-size:25px!important;
+   margin-top: 30px;
+        color: #3E8DA8;
+        text-align: center;
+        background-color: rgb(255, 255, 255);
+        font-family:Georgia, 'Times New Roman', Times, serif;
+       
+  }
+  .days{
+        font-size:35px!important;
+        margin: 0px 0px;
+        color: #3E8DA8;
+          text-align: center;
+          background-color: ffffff;
+          
+    
+  }
+  .circle-wrap .inside-circle {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: #fff;
+    line-height: 130px;
+    text-align: center;
+    margin-top: 10px;
+    margin-left: 10px;
+    position: absolute;
+    z-index: 100;
+    font-weight: 700;
+    font-size: 2em;
+    color:  #3E8DA8;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+  }
+  @keyframes fill {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(126deg);
+    }
+  }
+  .circle-wrap .circle .mask,
+  .circle-wrap .circle .fill {
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  border-radius: 50%;
+  }
+  .circle-wrap .circle .mask {
+  clip: rect(0px, 150px, 150px, 75px);
+  }
+  
+  .circle-wrap .circle .mask .fill {
+  clip: rect(0px, 75px, 150px, 0px);
+  background-color: #3E8DA8;
+  }
+  .circle-wrap .circle .mask.full,
+  .circle-wrap .circle .fill {
+  animation: fill ease-in-out 3s;
+  transform: rotate(126deg);
+  }
+  
+  
+  .box-3{
+   
+    display: grid;
+    grid-template-columns: auto auto ;
+    justify-content: center;
+    align-items: center;
+    background-color: ffffff;
+  }
+  .box-3 > div{
+    text-align: center;
+      padding:10px;
+     
+  }
+  .flag{
+      font-size:80px!important;
+      margin: 0px 0px;
+      color: #3E8DA8;
+      text-align:left;
+      background-color: ffffff;
+  }
+  .inner-grid1{
+  background-color: rgb(168, 219, 227) ;
+  width: 400px;
+  
+}
+.inner-grid2{
+background-color: rgb(168, 219, 227) ;
+ width: 400px;
+  
+}
+  
