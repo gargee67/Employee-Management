@@ -14,6 +14,11 @@ import { Project } from "./components/homepage/project/project";
 import { Adminproject } from "./components/adminhome/aproject/aproject";
 import { UpdateAdmin } from "./components/adminhome/aproject/update";
 import { CurrentProject } from "./components/homepage/project/currentp";
+import { Adminemp } from "./components/adminhome/detailsadmin/Adminemp";
+import { ADempEdit } from "./components/adminhome/detailsadmin/adminedit";
+import { Admindash } from "./components/adminhome/admindash/admindash";
+import { Adminleave } from "./components/adminhome/adminleave/adminleave";
+import { ADleaveEdit } from "./components/adminhome/adminleave/adleaveedit";
 
 export function App(){
     
@@ -39,6 +44,11 @@ const [user, setLoginUser]= useState({});
                     <Route path="/projectadmin"><Adminproject/></Route>
                     <Route path="/update/:procode"><UpdateAdmin/></Route>
                     <Route path="/currentproject"><CurrentProject user={user}/></Route>
+                    <Route path="/empdetails"><Adminemp/></Route>
+                    <Route path="/admineditemp/:id"><ADempEdit user={user}></ADempEdit></Route>
+                    <Route path="/dashbord"><Adminhome/></Route>
+                    <Route path="/adminleave"><Adminleave user={user}/></Route>
+                    <Route path="/adminleaveedit/:id"><ADleaveEdit/></Route>
                 </Switch>
             </Router>
             

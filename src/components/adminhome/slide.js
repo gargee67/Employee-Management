@@ -16,13 +16,11 @@ export const Sidebar = () => {
         <p className="logo">TEXSA <span className="menu">☰</span></p>
         <div className="button" onClick={()=> history.push("/register")}>Log out</div>
         <p className="logo1"> <span class="menu1">☰</span></p>
-        <p  className="icon-a"><i className="fa fa-dashboard icons"></i>Dashboard</p>
-        <p className="icon-a"><i className="fa fa-user icons"></i> Time Sheet</p>
-        <p className="icon-a"><i className="fa fa-list icons"></i><NavLink to= "/salaryadmin">Salary</NavLink></p>
-        <p className="icon-a"><i className="fa fa-male icons"></i><NavLink to= "/projectadmin">Project</NavLink></p>
-        <p className="icon-a"><i className="fa fa-paypal icons"></i>Salardccd</p>
-        <p className="icon-a"><i className="fa fa-list-alt icons"></i>Projects</p>
-        <p className="icon-a"><i className="fa fa-bell icons"></i>   Notices</p>
+        <p  className="icon-a"><i className="fa fa-dashboard icons"></i><NavLink to="/dashbord" id="navfat">Dashboard</NavLink></p>
+        <p className="icon-a"><i className="fa fa-user icons"></i><NavLink to= "/empdetails" id="navfat">Employee Details</NavLink></p>
+        <p className="icon-a"><i className="fa fa-list icons"></i><NavLink to= "/salaryadmin" id="navfat">Salary</NavLink></p>
+        <p className="icon-a"><i className="fa fa-male icons"></i><NavLink to= "/projectadmin" id="navfat">Project</NavLink></p>
+        <p className="icon-a"><i className="fa fa-paypal icons"></i><NavLink to= "/adminleave" id="navfat">Leave</NavLink></p>
         
       
       
