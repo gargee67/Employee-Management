@@ -16,6 +16,7 @@ import { useHistory } from "react-router-dom";
         pswrepeat:"",
         gender:"",
         id:"",
+        department:"",
         file:null
         
       });
@@ -59,6 +60,7 @@ import { useHistory } from "react-router-dom";
         fromdata.append('ppswrepeat', fullName.pswrepeat);
         fromdata.append('gender',fullName.gender);
         fromdata.append('id',fullName.id);
+        fromdata.append('department',fullName.department);
         fromdata.append('file', fullName.file);
 
         console.log(...fromdata);
@@ -81,7 +83,7 @@ import { useHistory } from "react-router-dom";
     return(
         <>
             <div className="register">
-            <form className="container1" onSubmit={onSubmits} method="POST" id="from">
+            <form className="container4" onSubmit={onSubmits} method="POST" id="from">
         <h1 className=" text-capitalize bg-danger-subtle">Registration Form</h1>
         <div className="input fnm">
             <i className="fa-solid fa-user"></i> <input type="text" className="fname "  placeholder="FirstName" name="fname" onChange={inputEvent} value={fullName.fname}/>
@@ -111,6 +113,9 @@ import { useHistory } from "react-router-dom";
         </div>
         <div class="input">
             <i className="fa-regular fa-id-badge"></i> <input type="text" className="inpt" placeholder="Id-no" name="id" onChange={inputEvent} value={fullName.id}/>
+        </div>
+        <div class="input">
+            <i className="fa-regular fa-id-badge"></i> <input type="text" className="inpt" placeholder="Department-no" name="department" onChange={inputEvent} value={fullName.department}/>
         </div>
         <div class="input">
             <p className=" bg-success-subtle">Upload your image here</p>

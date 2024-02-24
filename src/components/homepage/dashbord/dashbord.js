@@ -50,17 +50,17 @@ export const Dashbord=()=>{
             <th>Dead-Line</th>
           </tr>
           <tr>
-            <td>Alfreds das</td>
+            <td>Risha Mondal</td>
             <td>Maria Anders</td>
             <td>2024-08-15</td>
           </tr>
           <tr>
-            <td>Centro mondal</td>
+            <td>Writtika Mitra</td>
             <td>Francisco Chang</td>
             <td>2024-02-13</td>
           </tr>
           <tr>
-            <td>Ernst mitra</td>
+            <td>Sweta</td>
             <td>Roland Mendel</td>
             <td>2024-07-11</td>
           </tr>
@@ -69,16 +69,8 @@ export const Dashbord=()=>{
             <td>Helen Bennett</td>
             <td>2024-12-07</td>
           </tr>
-          <tr>
-            <td>Laughing Bacchus sarkar</td>
-            <td>Yoshi Tannamuri</td>
-            <td>2024-05-14</td>
-          </tr>
-          <tr>
-            <td>Magazzini Alimentari das</td>
-            <td>Giovanni Rovelli</td>
-            <td>2024-06-12</td>
-          </tr>
+          
+          
         </table>
       
     </div>

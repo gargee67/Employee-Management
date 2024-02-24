@@ -25,6 +25,7 @@ export const Leave=({ user })=>{
         name:user.fname,
         id:user.id,
         email:user.email,
+        
     });
     const change=(event)=>{
       const vall=  event.target.value;
@@ -43,6 +44,15 @@ export const Leave=({ user })=>{
         axios.post("http://localhost:8000/leave",oldvalue)
         .then(res=>{
             console.log(res)
+            newvalue({
+              subject:"",
+              date:"",
+              country:"",
+              message:"",
+              name:user.fname,
+              id:user.id,
+              email:user.email,
+            })
         })
         .catch(err=>console.log(err));
     }
@@ -54,12 +64,12 @@ export const Leave=({ user })=>{
         <div className="button" onClick={()=> history.push("/register")}>Log out</div>
         <p className="logo1"> <span class="menu1">☰</span></p>
         
-        <p className="icon-a"><i className="fa fa-dashboard icons"></i><NavLink to= "/">Dashbord</NavLink></p>
-        <p className="icon-a"><i className="fa fa-user icons"></i><NavLink to= "/timesheet">Time Sheet</NavLink> </p>
-        <p className="icon-a"><i className="fa fa-list icons"></i><NavLink to= "/working">Working Hour</NavLink></p>
-        <p className="icon-a"><i className="fa fa-male icons"></i><NavLink to= "/leave">Leave</NavLink></p>
-        <p className="icon-a"><i className="fa fa-paypal icons"></i>Salary</p>
-        <p className="icon-a"><i className="fa fa-list-alt icons"></i>Projects</p>
+        <p className="icon-a"><i className="fa fa-dashboard icons"></i><NavLink to= "/" id="navfat">Dashbord</NavLink></p>
+        <p className="icon-a"><i className="fa fa-user icons"></i><NavLink to= "/timesheet" id="navfat">Time Sheet</NavLink> </p>
+        <p className="icon-a"><i className="fa fa-list icons"></i><NavLink to= "/working" id="navfat">Working Hour</NavLink></p>
+        <p className="icon-a"><i className="fa fa-male icons"></i><NavLink to= "/leave" id="navfat">Leave</NavLink></p>
+        <p className="icon-a"><i className="fa fa-paypal icons"></i><NavLink to= "/salary" id="navfat">Salary</NavLink></p>
+        <p className="icon-a"><i className="fa fa-list-alt icons"></i><NavLink to= "/project" id="navfat">Project</NavLink></p>
         <p className="icon-a"><i className="fa fa-bell icons"></i>   Notices</p>
         
       
@@ -85,13 +95,14 @@ export const Leave=({ user })=>{
   </form>
 </div>
 
-<div className="table-from">
+<div className="table-from" id="tab">
 <table className="table">
   <tr className="tr">
     <th className="th">Message</th>  
     <th className="th">Type</th>
     <th className="th">Date</th>
     <th className="th">Country</th>
+    <th className="th">Status</th>
   </tr>
 
   {
@@ -105,6 +116,7 @@ export const Leave=({ user })=>{
             <td className="td">{userss.subject}</td>
             <td className="td">{userss.date}</td>
             <td className="td">{userss.country}</td>
+            <td className="td">{userss.status}</td>
         </tr>
         )
         

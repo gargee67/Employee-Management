@@ -46,6 +46,16 @@ export const Timesheet=({user})=>{
         axios.post("http://localhost:8000/timesheet",old1)
         .then(res=>{
             console.log(res)
+            new1({
+                date:"",
+                time:"",
+                etime:text,
+                pcode:"",
+                pname:"",
+                hours:"",
+                work:"",
+                id:user.id,
+            })
         })
        .catch(err=>console.log(err));
     }
@@ -59,12 +69,12 @@ export const Timesheet=({user})=>{
         <div className="button" onClick={()=> history.push("/register")}>Log out</div>
         <p className="logo1"> <span class="menu1">☰</span></p>
         
-        <p className="icon-a"><i className="fa fa-dashboard icons"></i><NavLink to= "/">Dashbord</NavLink></p>
-        <p className="icon-a"><i className="fa fa-user icons"></i><NavLink to= "/timesheet">Time Sheet</NavLink> </p>
-        <p className="icon-a"><i className="fa fa-list icons"></i><NavLink to= "/working">Working Hour</NavLink></p>
-        <p className="icon-a"><i className="fa fa-male icons"></i><NavLink to= "/leave">Leave</NavLink></p>
-        <p className="icon-a"><i className="fa fa-paypal icons"></i>Salary</p>
-        <p className="icon-a"><i className="fa fa-list-alt icons"></i>Projects</p>
+        <p className="icon-a"><i className="fa fa-dashboard icons"></i><NavLink to= "/" id="navfat">Dashbord</NavLink></p>
+        <p className="icon-a"><i className="fa fa-user icons"></i><NavLink to= "/timesheet" id="navfat">Time Sheet</NavLink> </p>
+        <p className="icon-a"><i className="fa fa-list icons"></i><NavLink to= "/working" id="navfat">Working Hour</NavLink></p>
+        <p className="icon-a"><i className="fa fa-male icons"></i><NavLink to= "/leave" id="navfat">Leave</NavLink></p>
+        <p className="icon-a"><i className="fa fa-paypal icons"></i><NavLink to= "/salary" id="navfat">Salary</NavLink></p>
+        <p className="icon-a"><i className="fa fa-list-alt icons"></i><NavLink to= "/project" id="navfat">Project</NavLink></p>
         <p className="icon-a"><i className="fa fa-bell icons"></i>   Notices</p>
         
       
@@ -114,7 +124,7 @@ export const Timesheet=({user})=>{
             <label for="description">Today Work:</label>
             <textarea id="description"  name="work" onChange={changing} value={old1.work}> </textarea>
         </div>
-        <div className="button12">
+        <div className="button16">
         <button onClick={submitted}>Save</button>
         <button className="jo"> </button>
         <button onClick={()=>setview1(2)}>See Previous Sheet</button>

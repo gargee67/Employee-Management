@@ -106,7 +106,7 @@
     color: #f1f1f1;
 }
 
-input[type=text], select {
+ [type=text], select {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -117,7 +117,7 @@ input[type=text], select {
   }
   
   
-  input[type=submit] {
+    input[type=submit] {
     width: 100%;
     background-color: #4CAF50;
     color: white;
@@ -131,7 +131,7 @@ input[type=text], select {
   input[type=submit]:hover {
     background-color: #45a049;
   }
-  textarea {
+    textarea {
       width: 100%;
       padding: 10px;
      
@@ -154,17 +154,25 @@ input[type=text], select {
     width: 400px;
     height: auto;
   }
-  .td, .th {
+  #tab  .td, .th {
     border: 1px solid #dddddd;
     text-align: left;
     
   }
-  
-  .tr:nth-child(even) {
+  #tab th{
+    background-color: #45a049;
+  }
+  .th{
+    color: white
+  }
+  .td{
+    color: black;
+  }
+  #tab .tr:nth-child(even) {
     background-color: #dddddd;
   }
  
-  .table{
+  #tab  .table{
     
    
     padding: 40px;

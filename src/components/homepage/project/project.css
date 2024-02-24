@@ -1,0 +1,12 @@
+.bal{
+   
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    padding: 30px;
+    margin-top: 80px;
+    width: 800px;
+    height: fit-content;
+    margin-left: 100px;
+    justify-content: space-around;
+}

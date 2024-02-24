@@ -12,7 +12,7 @@ const Login = ({ setLoginUser}) => {
         email:"",
         passs:"",
       });
-      const inputEvent=(event)=>{
+    const inputEvent=(event)=>{
         //console.log(event.target.value);
         //console.log(event.target.name);
         //setFullName(event.target.value);
@@ -26,13 +26,13 @@ const Login = ({ setLoginUser}) => {
             }
         })
     }
-   const onSubmits=async (event)=>{
+    const onSubmits= (event)=>{
     event.preventDefault();
     //alert("login ongoing");
     const { email, passs } = fullName
     if(email && passs)
     {
-        await axios.post("http://localhost:8000/login", {email,passs})
+        axios.post("http://localhost:8000/login", {email,passs})
             .then(res=>{
                 //console.log(res.data.check.id);
                 alert(res.data.message)
@@ -43,17 +43,15 @@ const Login = ({ setLoginUser}) => {
                 //console.log(obj);
                 //var array= JSON.parse(obj);
                 if(res.data.check.id[0]==='A' && res.data.check.id[1]==='D')
-                {
-                    
+                {                  
                     history.push({
-                        pathname:"/admin",
-                        
+                        pathname:"/admin"
                     });
-                   
-                }else{
+                } 
+                if(res.data.check.id[0]==='E' && res.data.check.id[1]==='M')
+                {
                 history.push({
                     pathname:"/",
-                   
                 });
             }
             })
