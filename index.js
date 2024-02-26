@@ -145,7 +145,7 @@ const ECurrentProject= new mongoose.model("ECurrentProject",employeeProjectSchem
 
 app.post("/login",async (req,res)=>{
     //res.send("api login");
-   
+    var postingg=true;
     const {email, passs}=req.body;
     const data={
         email:email,
@@ -250,18 +250,21 @@ app.patch("/projectadmin/:procode",upload.any(),async(req,res)=>{
 })
 app.post("/timesheet", async(req,res)=>{
     //console.log(req.body);
-    const TimeSheet= new ElogTime({
-        date:req.body.date,
-        time:req.body.time,
-        etime:req.body.etime,
-        pcode:req.body.pcode,
-        pname:req.body.pname,
-        hours:req.body.hours,
-        work:req.body.work,
-        id:req.body.id,
-    })
-    const sheet=await TimeSheet.save();
-    res.send({message:"ok your timesheet submitted"});
+
+        const TimeSheet= new ElogTime({
+            date:req.body.date,
+            time:req.body.time,
+            etime:req.body.etime,
+            pcode:req.body.pcode,
+            pname:req.body.pname,
+            hours:req.body.hours,
+            work:req.body.work,
+            id:req.body.id,
+        })
+        var postingg=false;
+        const sheet=await TimeSheet.save();
+        res.send({message:"ok your timesheet submitted"});
+    
 })
 app.post("/working", async(req,res)=>{
     //console.log(req.body);
@@ -324,20 +327,20 @@ app.get("/salary/:id/:month",(req,res)=>{
 // })
 app.get("/working/:id",(req,res)=>{
     let sum=0;
-    console.log("gargee",req.params.id);
+    //console.log("gargee",req.params.id);
     EWorkingTime.find({id: req.params.id})
     .then((user3)=>{
-        //console.log(user3.length);
+        
         for(let i=0; i<user3.length;i++)
         {
             if(parseInt(user3[i].month)===h)
             {
-                
+                console.log("jkjk", parseFloat(user3[i].hour));
                 sum=sum + parseInt(user3[i].hour);
             }
         }
        
-       
+        console.log("j",sum);
         res.json(sum)
     })
     .catch((err)=>{
@@ -362,7 +365,7 @@ app.get("/working/:id",(req,res)=>{
 })*/
 /*jj*/
 app.get("/timesheet/:id",(req,res)=>{
-    ElogTime.find({id: req.params.id})
+    ElogTime.find({id: req.params.id}).sort({_id:-1}).limit(5)
     .then(user2=>res.json(user2))
     .catch(err=>res.json(err))
 })
@@ -401,6 +404,7 @@ app.get("/projectadmin/id/:id",(req,res)=>{
 
 })
 app.get("/timesheet",(req,res)=>{
+    console.log("jijeof");
     ElogTime.find({id: req.params.id})
     .then(user2=>res.json(user2))
     .catch(err=>res.json(err))
