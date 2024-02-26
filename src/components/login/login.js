@@ -5,8 +5,9 @@ import axios from "axios";
 //import { useHistory } from "react-router-dom"
 import { useHistory } from "react-router-dom";
 
-const Login = ({ setLoginUser}) => {
+const Login = ({ setLoginUser } ) => {
 
+    //console.log("gjgjgj",JSON.stringify(setLoginUser));
     const history= useHistory();
     const [fullName, setFullName]= useState({
         email:"",
@@ -36,6 +37,9 @@ const Login = ({ setLoginUser}) => {
             .then(res=>{
                 //console.log(res.data.check.id);
                 alert(res.data.message)
+                //
+                window.localStorage.setItem('welcome_agin_login',JSON.stringify(res.data.check));
+                window.localStorage.setItem("TimeSheet",true);
                 setLoginUser(res.data.check);
                 //console.log(res.data.check);
                 //if(res.data.check)
@@ -57,6 +61,7 @@ const Login = ({ setLoginUser}) => {
             })
             .catch(err=>console.log(err));
     }
+    
    }
    
 

@@ -4,14 +4,21 @@ import { useHistory } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import "./timesheet.css";
 import axios from "axios";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
+//import { Working } from "../homepage/workingbord/working";
+//import { useNavigate } from 'react-router-dom';
 export const Timesheet=({user})=>{
     const history= useHistory();
-    const d = new Date();
-    let text = d.toLocaleTimeString();
+   // const navigate = useNavigate();
+    //const d = new Date();
+    //let text = d.toLocaleTimeString();
+    console.log(history);
+    const [final,updatefinal]=useState(0);
+    //const [Fenable, Fdisable]=useState(true);
     const [old1,new1]=useState({
         date:"",
         time:"",
-        etime:text,
+        etime:"",
         pcode:"",
         pname:"",
         hours:"",
@@ -37,27 +44,85 @@ export const Timesheet=({user})=>{
             }
         })
     }
-    const finish=(event)=>{
-        event.preventDefault();
-        alert("submit");
-       
+    
+    function calcu()
+    {
+        
+        const startTime = document.getElementById('start-time').value;
+        const endTime = document.getElementById('exit-time').value;
+        
+        let [startHour, startMinute] = startTime.split(':');
+        let [endHour, endMinute] = endTime.split(':');
+        const starttimehour=startHour*60*60+startMinute*60;
+        const endtimehour=endHour*60*60+endMinute*60;
+        const totalhours=endtimehour-starttimehour;
+        if(totalhours<0)
+        {
+            alert("Please write correct exit time");
+        }
+        else if( final> 12)
+        {
+            alert("Your working hour is over 12 hour so need to get permission to submit timesheet")
+        }
+        else{
+
+            updatefinal(Math.round((totalhours/3600)*10)/10);
+            new1((pre)=>{
+                return{
+                  ...pre,
+                  hours:final,
+                }
+        
+               })
+            console.log("jkjkjkjkkj",final);
+            //document.getElementById('decimalHours').textContent=final;
+        }
     }
     const submitted=(event)=>{
-        axios.post("http://localhost:8000/timesheet",old1)
-        .then(res=>{
-            console.log(res)
-            new1({
-                date:"",
-                time:"",
-                etime:text,
-                pcode:"",
-                pname:"",
-                hours:"",
-                work:"",
-                id:user.id,
-            })
-        })
-       .catch(err=>console.log(err));
+        //console.log(old1.hours);
+        //<Working data1={old1.hours}/>
+     
+     
+    //const data = {  };
+    //<Link to="/Working" state={{test: old1.hours}}>
+    //Go to ProfileTwo
+  //</Link>
+ 
+
+        console.log("INNNN",typeof(window.localStorage.getItem("TimeSheet")));
+    
+            if(old1.date && old1.etime && old1.hours && old1.pcode && old1.pname && old1.time && old1.work && old1.id && window.localStorage.getItem("TimeSheet")==="true")
+            {
+                //Fdisable(false);
+                window.localStorage.setItem("TimeSheet",false);
+                //alert("Your timesheet is successfully submitted");
+                axios.post("http://localhost:8000/timesheet",old1)
+                .then(res=>{
+                    alert(res.data.message);
+                    new1({
+                        date:"",
+                        time:"",
+                        etime:"",
+                        pcode:"",
+                        pname:"",
+                        hours:"",
+                        work:"",
+                        id:user.id,
+                    })
+                })
+               .catch(err=>console.log(err));
+               history.push({ pathname: "/Working", state: {data: old1.hours} });
+            }else{
+                if(window.localStorage.getItem("TimeSheet")==="false")
+                {
+                    alert("You have submitted timesheet previously ");
+                }else{
+                    alert("Invalid input field");
+                }
+              
+            }
+        
+       
     }
     
     return (
@@ -81,7 +146,7 @@ export const Timesheet=({user})=>{
       
       </div>
       
-       {view1===1? <form className="container" onSubmit={finish}>
+       {view1===1? <form className="container">
     <div class="context">
         
         <div class="form-item">
@@ -98,11 +163,12 @@ export const Timesheet=({user})=>{
         </div>
         <div class="form-item">
             <label for="task-date">Entry Time</label>
-            <input type="time" id="task-date"  name="time" onChange={changing} value={old1.time} />
+            <input type="time" id="start-time"   name="time" onChange={changing} value={old1.time} />
+            
         </div>
         <div class="form-item">
             <label for="task-date">Exit Time</label>
-            <input type="text" id="task-date"  value={text}/>
+            <input type="time" id="exit-time"  name="etime" onChange={changing} value={old1.etime}/>
         </div>
 
         </div>
@@ -118,7 +184,8 @@ export const Timesheet=({user})=>{
         </div>
         <div class="form-item">
             <label for="hours-invested">Hours Invested:</label>
-            <input type="number" id="hours-invested"  name="hours" onChange={changing} value={old1.hours}/>
+            <input type="text" id="decimal-hour"  value={old1.hours}/>
+            <div className="ball" onClick={calcu}>show hour</div>
         </div>
         <div class="form-item">
             <label for="description">Today Work:</label>

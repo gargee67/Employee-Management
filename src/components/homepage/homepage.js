@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./homepage.css";
 import { Navbar } from "../navbar/navbar";
 import { Dashbord } from "./dashbord/dashbord";
@@ -9,7 +9,9 @@ import { NavLink } from "react-router-dom"
  export const Homepage=({ user })=>{
   console.log("user"+ JSON.stringify(user));
     const history= useHistory();
+    
 
+    
     const hello=()=>{
       return(
         
@@ -21,7 +23,9 @@ import { NavLink } from "react-router-dom"
     //var array= JSON.parse(obj);
     return(
         
+
         <div className="homepage">
+          
             <Navbar/>
     <div className="grid-container1">
     <div className="grid-item1">
@@ -74,7 +78,8 @@ import { NavLink } from "react-router-dom"
    
   </div>
   
-           
+    
         </div>
+   
     )
 }

@@ -87,3 +87,12 @@ h1 {
     color: white;
     text-decoration: none;
   }
+  .ball{
+    background-color: #04AA6D;
+    height: fit-content;
+    width: fit-content;
+    cursor: pointer;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 5px;
+  }

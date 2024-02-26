@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import { Homepage } from "./components/homepage/homepage";
 import { Register } from "./components/register/register";
@@ -23,31 +23,43 @@ import { ADleaveEdit } from "./components/adminhome/adminleave/adleaveedit";
 export function App(){
     
 const [user, setLoginUser]= useState({});
+//const [set, update]= useState({user});
+
+/*useEffect(()=>{
+    const data=window.localStorage.getItem('welcomee');
+    if( data !==null)
+    {
+      update(JSON.parse(data));
+    }
+  },[])*/
+
+    //constwindow.localStorage.setItem('welcome_local_stroage',JSON.stringify(user))
+
         return(
             <>
             <Router>
                 <Switch>
                     <Route exact path="/">
                         {
-                            user && user._id ? <Homepage user={user}/> : <Login setLoginUser={setLoginUser}/>
+                            JSON.parse(localStorage.getItem('welcome_agin_login')) && JSON.parse(localStorage.getItem('welcome_agin_login')).id.length>0 ? <Homepage user={JSON.parse(localStorage.getItem('welcome_agin_login'))}/> : <Login setLoginUser={setLoginUser}/>
                         }
                         </Route>
                     <Route path="/login"><Login setLoginUser={setLoginUser}/></Route>
                     <Route path="/register"><Register/></Route>
-                    <Route path="/admin"><Adminhome user={user}/></Route>
-                    <Route path="/timesheet"><Timesheet user={user}/></Route>
-                    <Route path="/leave"><Leave user={user}/></Route>
-                    <Route path="/working"><Working  user={user}/></Route>
+                    <Route path="/admin"><Adminhome user={JSON.parse(localStorage.getItem('welcome_agin_login'))}/></Route>
+                    <Route path="/timesheet"><Timesheet user={JSON.parse(localStorage.getItem('welcome_agin_login'))}/></Route>
+                    <Route path="/leave"><Leave user={JSON.parse(localStorage.getItem('welcome_agin_login'))}/></Route>
+                    <Route path="/working"><Working  user={JSON.parse(localStorage.getItem('welcome_agin_login'))}/></Route>
                     <Route path="/salaryadmin"><SalaryAdmin/></Route>
-                    <Route path="/salary"><Salary user={user}/></Route>
-                    <Route path="/project"><Project user={user}/></Route>
+                    <Route path="/salary"><Salary user={JSON.parse(localStorage.getItem('welcome_agin_login'))}/></Route>
+                    <Route path="/project"><Project user={JSON.parse(localStorage.getItem('welcome_agin_login'))}/></Route>
                     <Route path="/projectadmin"><Adminproject/></Route>
                     <Route path="/update/:procode"><UpdateAdmin/></Route>
-                    <Route path="/currentproject"><CurrentProject user={user}/></Route>
+                    <Route path="/currentproject"><CurrentProject user={JSON.parse(localStorage.getItem('welcome_agin_login'))}/></Route>
                     <Route path="/empdetails"><Adminemp/></Route>
-                    <Route path="/admineditemp/:id"><ADempEdit user={user}></ADempEdit></Route>
+                    <Route path="/admineditemp/:id"><ADempEdit user={JSON.parse(localStorage.getItem('welcome_agin_login'))}></ADempEdit></Route>
                     <Route path="/dashbord"><Adminhome/></Route>
-                    <Route path="/adminleave"><Adminleave user={user}/></Route>
+                    <Route path="/adminleave"><Adminleave user={JSON.parse(localStorage.getItem('welcome_agin_login'))}/></Route>
                     <Route path="/adminleaveedit/:id"><ADleaveEdit/></Route>
                 </Switch>
             </Router>

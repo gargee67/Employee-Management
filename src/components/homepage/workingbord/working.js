@@ -4,31 +4,47 @@ import { NavLink } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import "./working.css";
 import axios from "axios";
+import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 
 export const Working=({user})=>{
     const history=useHistory();
-   
+    const location= useLocation();
+   console.log("jkjkjkjkjkjkjkj",location.state);
+  
+   const[hour1, sethour]=useState({
+    id:user.id,
+    email:user.email,
+    hour: location.state===null? 0:location.state.data,
+  });
+  const[user3,newuser3]= useState(0);
+   useEffect(()=>{
     
+      axios.post("http://localhost:8000/working",hour1)
+      .then(res=>{
+        console.log(res);
+      
+      })
+      .catch(err=>console.log(err));
+   })
+
+
+
     useEffect(()=>{
       axios.get(`http://localhost:8000/working/${user.id}`)
       .then(sum=>{
+        console.log("hhohoi",sum.data);
         newuser3(sum.data);
       })
       .catch(err=>console.log(err));
   },[user.id]);
 
    
-  const[view2, setview2]=useState(1);
-  const[hour1, sethour]=useState({
-    id:user.id,
-    email:user.email,
-    hour:"",
-  });
-
-  const[user3,newuser3]= useState(0);
+  //const[view2, setview2]=useState(1);
+  
+  
 
     
-    function calculateHours() {
+    /*function calculateHours() {
         const startTime = document.getElementById('startTime').value;
         const endTime = document.getElementById('endTime').value;
         const breakTime = document.getElementById('breaktime').value;
@@ -55,18 +71,8 @@ export const Working=({user})=>{
         
     
       
-    }
-    const ongo=(event)=>{
-      console.log(hour1);
-      alert("your Working time is submitted");
-      axios.post("http://localhost:8000/working",hour1)
-      .then(res=>{
-        console.log(res);
-        setview2(1);
-      
-      })
-      .catch(err=>console.log(err));
-    }
+    }*/
+    
     return(<>
     <Navbar/>
     <div className="big_div">
@@ -86,37 +92,9 @@ export const Working=({user})=>{
       
       
       </div>
-      {
-        view2===2?
-      <div class="container1">
-        <h1>WorkingHour Calculate</h1>
-        <div class="form-container">
-            <label for="startTime">Start Time</label>
-            <input type="time" id="startTime" name="startTime"/>
+      
+    
 
-            <label for="endTime">End Time</label>
-            <input type="time" id="endTime" name="endTime"/>
-                        
-            <label for="break">Take Break</label>
-            <input type="time" id="breaktime" name="breaktime"/>
-                        
-
-
-            
-        </div>
-        
-        <button onClick={calculateHours}>Calculate</button>
-        <div class="result-container">
-          
-            <h2>Today Working Hour:</h2>
-            <p id="decimalHours"></p>
-          <div className="button12" onClick={ongo}>Submit</div>
-        </div>
-       
-    </div>
-:null}
-{
-  view2===1?
   <div className="red1">
    <div className="spell"> <h1>Working Hour Report</h1></div>
     <div className="red">
@@ -128,10 +106,10 @@ export const Working=({user})=>{
   </div>
   <div className="yy"><h2>Total Hour Work in This Month </h2></div>
   </div>
-  <div className="button12" onClick={()=>setview2(2)}>Hour Submit</div>
+  
   </div>
   
-:null}
+
     
       </div>
     </>)
