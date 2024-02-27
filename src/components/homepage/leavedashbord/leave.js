@@ -7,7 +7,7 @@ import axios from "axios";
 export const Leave=({ user })=>{
     const history= useHistory();
     
-
+    var use="jkjk";
     const[user1,newuser1]= useState([]);
 
     useEffect(()=>{
