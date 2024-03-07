@@ -17,28 +17,29 @@ export const Working=({user})=>{
     hour: location.state===null? 0:location.state.data,
   });
   const[user3,newuser3]= useState(0);
-   useEffect(()=>{
+  console.log("state",location.state);
+  if(location.state!==null)
+  {
+    axios.post("http://localhost:8000/working",hour1)
+    .then(res=>{
+      console.log(res);
     
-      axios.post("http://localhost:8000/working",hour1)
-      .then(res=>{
-        console.log(res);
-      
-      })
-      .catch(err=>console.log(err));
-   })
+    })
+    .catch(err=>console.log(err));
+  }
 
 
 
-    useEffect(()=>{
-      axios.get(`http://localhost:8000/working/${user.id}`)
+   if(location.state===null)
+   {
+    axios.get(`http://localhost:8000/working/${user.id}`)
       .then(sum=>{
         console.log("hhohoi",sum.data);
         newuser3(sum.data);
       })
       .catch(err=>console.log(err));
-  },[user.id]);
-
-   
+   }
+      
   //const[view2, setview2]=useState(1);
   
   

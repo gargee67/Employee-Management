@@ -20,6 +20,7 @@ export const Leave=({ user })=>{
     const [oldvalue, newvalue]= useState({
         subject:"",
         date:"",
+        date1:"",
         country:"",
         message:"",
         name:user.fname,
@@ -40,21 +41,29 @@ export const Leave=({ user })=>{
     }
     const onSubmit=(event)=>{
         event.preventDefault();
-        alert(" your leave is submitted wait for approval");
-        axios.post("http://localhost:8000/leave",oldvalue)
-        .then(res=>{
-            console.log(res)
-            newvalue({
-              subject:"",
-              date:"",
-              country:"",
-              message:"",
-              name:user.fname,
-              id:user.id,
-              email:user.email,
-            })
-        })
-        .catch(err=>console.log(err));
+        if(window.localStorage.getItem("Leave")==="true")
+        {
+          window.localStorage.setItem("Leave",false);
+          alert(" your leave is submitted wait for approval");
+          axios.post("http://localhost:8000/leave",oldvalue)
+          .then(res=>{
+              console.log(res)
+              newvalue({
+                subject:"",
+                date:"",
+                date1:"",
+                country:"",
+                message:"",
+                name:user.fname,
+                id:user.id,
+                email:user.email,
+              })
+          })
+          .catch(err=>console.log(err));
+        }else{
+          alert("you have previously submitted leave application");
+        }
+    
     }
     return (<>
     <Navbar/>
@@ -84,8 +93,12 @@ export const Leave=({ user })=>{
     <input type="text" id="subject" name="subject" onChange={change} value={oldvalue.subject}/>
 
     
-    <label for="entry-date">Starting Leave Date:</label><br/><br/>
+    <label for="entry-date">Leave Beginnig Date:</label><br/><br/>
     <input type="date" id="date" name="date" onChange={change} value={oldvalue.date} /><br/><br/>
+
+    <label for="exit-date"> Leave Ending Date:</label><br/><br/>
+    <input type="date" id="date" name="date1" onChange={change} value={oldvalue.date1} /><br/><br/>
+
     <label for="country">Country</label>
     <input type="text" id="country" name="country" onChange={change} value={oldvalue.country} />
   

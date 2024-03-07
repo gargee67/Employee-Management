@@ -72,7 +72,7 @@ export const SalaryAdmin=()=>{
                     <td>{use.lname}</td>
                     <td>{use.email}</td>
                     <td>{use.id}</td>
-                    <td><div className="rah1"><button>Edit Salary</button></div></td>
+                    <td><div className="rah1"><button onClick={()=>oncon(use.id)}>Edit Salary</button></div></td>
                 </tr>
             )
            }):null}
@@ -91,9 +91,17 @@ export const SalaryAdmin=()=>{
        
 
 </table>
+
 :null}
 {showmodal===1?
-    <Modal data={user6} onClose={()=>setshowmodal(0)} department={user4[0].department} id={user4[0].id}/>
+<div>
+    {user4.length===1?
+        <Modal data={user6} onClose={()=>setshowmodal(0)} department={user4[0].department} id={user4[0].id}/>
+    :null}
+    {user4.length===0?
+        <Modal data={user6} onClose={()=>setshowmodal(0)} department={user11[0].department} id={user11[0].id}/>
+    :null}
+    </div>
  :null}
 
         

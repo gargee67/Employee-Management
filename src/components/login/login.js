@@ -40,6 +40,7 @@ const Login = ({ setLoginUser } ) => {
                 //
                 window.localStorage.setItem('welcome_agin_login',JSON.stringify(res.data.check));
                 window.localStorage.setItem("TimeSheet",true);
+                window.localStorage.setItem("Leave",true);
                 setLoginUser(res.data.check);
                 //console.log(res.data.check);
                 //if(res.data.check)

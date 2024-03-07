@@ -50,7 +50,7 @@ import { NavLink } from "react-router-dom"
       <div className="item2inner">
         <from onSubmit={()=>{}}>
           <label>
-        <img src={require("../../../../from-backend/public/images/"+ user.file)} alt="Avatar" style={{width:"200px", height:"200px"}} onClick={hello}/>
+        <img src={require("C:/Employee/Employee-Management-backend/public/images/"+ user.file)} alt="Avatar" style={{width:"200px", height:"200px"}} onClick={hello}/>
         </label>
         </from>
       </div>

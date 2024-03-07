@@ -40,6 +40,7 @@ export const Adminproject=()=>{
 
         if(oldproject.proname && oldproject.procode && oldproject.prodescription && oldproject.asiemp)
         {
+            alert("project is assigned to employee successfully");
             await axios.post("http://localhost:8000/projectadmin",fromdata)
             .then(res=> {
                 console.log(res)

@@ -20,8 +20,13 @@ export const Project=({user})=>{
     const hallu=(event)=>{
         axios.get(`http://localhost:8000/currentproject/${user.id}`)
         .then((us)=>{
-           
-          setus(us.data[0])
+          
+          if(us.data.length===0)
+          {
+            alert("insert your current project first!!");
+          }else{
+            setus(us.data[0]);
+          }
         })
         .catch(err=>console.log(err));
     }

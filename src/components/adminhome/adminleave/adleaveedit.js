@@ -18,7 +18,7 @@ export const ADleaveEdit=({user})=>{
     const jal=async(e)=>{
         e.preventDefault();
         
-       
+       alert("you give permission to employee leave message");
         console.log(id);
         console.log(status);
         await axios.patch(`http://localhost:8000/leave/${id}`,status)
@@ -52,7 +52,7 @@ export const ADleaveEdit=({user})=>{
             <form onSubmit={jal} method="POST" id="from">
             <label for="cars">Choose a Option</label>
   <select name="cars" id="cars" onChange={inputc} value={status.cars}>
-    <option value="approve">Select</option>
+    <option value="default">Select</option>
     <option value="cancel">Cancel</option>
     <option value="approve">Approve</option>
     

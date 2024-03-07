@@ -53,13 +53,8 @@ export const UpdateAdmin=()=>{
         
             await axios.patch(`http://localhost:8000/projectadmin/${procode}`,fromdata)
             .then(res=> {
-                console.log(res)
-                 newproject1({
-                    proname:"",
-                    procode:"",
-                    asiemp:"",
-                    prodescription:"",
-                })
+                alert("Changes hasbeen made successfully");
+                
             })
             .catch(err=>console.log(err));
         

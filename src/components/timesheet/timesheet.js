@@ -13,7 +13,7 @@ export const Timesheet=({user})=>{
     //const d = new Date();
     //let text = d.toLocaleTimeString();
     console.log(history);
-    const [final,updatefinal]=useState(0);
+    //const [final,updatefinal]=useState(0);
     //const [Fenable, Fdisable]=useState(true);
     const [old1,new1]=useState({
         date:"",
@@ -56,6 +56,7 @@ export const Timesheet=({user})=>{
         const starttimehour=startHour*60*60+startMinute*60;
         const endtimehour=endHour*60*60+endMinute*60;
         const totalhours=endtimehour-starttimehour;
+        const final=Math.round((totalhours/3600)*10)/10;
         if(totalhours<0)
         {
             alert("Please write correct exit time");
@@ -66,7 +67,7 @@ export const Timesheet=({user})=>{
         }
         else{
 
-            updatefinal(Math.round((totalhours/3600)*10)/10);
+           
             new1((pre)=>{
                 return{
                   ...pre,
@@ -74,7 +75,7 @@ export const Timesheet=({user})=>{
                 }
         
                })
-            console.log("jkjkjkjkkj",final);
+            //console.log("jkjkjkjkkj",final);
             //document.getElementById('decimalHours').textContent=final;
         }
     }
