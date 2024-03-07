@@ -14,6 +14,7 @@ app.use(cors());
 const d = new Date();
 const t=d.getDate();
 const h=d.getMonth();
+//console.log("month",h);
 const m= d.getFullYear();
 const storage= multer.diskStorage({
     destination: (req,file, cb)=>{
@@ -74,6 +75,7 @@ const Eregister= new mongoose.model("Eregister",employeeSchema);
 const employeeleaveSchema= new mongoose.Schema({
     subject:String,
     date:String,
+    date1:String,
     country:String,
     message:String,
     name:String,
@@ -289,6 +291,7 @@ app.post("/leave",async(req,res)=>{
     const leave= new Eleave({
         subject: req.body.subject,
         date: req.body.date,
+        date1: req.body.date1,
         country: req.body.country,
         message: req.body.message,
         name: req.body.name,
@@ -311,9 +314,17 @@ app.get("/currentproject/:id",(req,res)=>{
     .catch(err=>res.json(err))
 })
 app.get("/salary/:id",(req,res)=>{
-    ESalary.find({id: req.params.id}).limit(5)
-    .then(user8=>res.json(user8))
-    .catch(err=>res.json(err))
+    if(ESalary.find({
+        procode1:null
+        }))
+        {
+            res.message("insert your current project");
+        }else{
+            ESalary.find({id: req.params.id}).limit(5)
+            .then(user8=>res.json(user8))
+            .catch(err=>res.json(err))
+        }
+   
 })
 app.get("/salary/:id/:month",(req,res)=>{
     //console.log(req.params.month);
@@ -327,10 +338,10 @@ app.get("/salary/:id/:month",(req,res)=>{
 // })
 app.get("/working/:id",(req,res)=>{
     let sum=0;
-    //console.log("gargee",req.params.id);
+    console.log("gargee",h);
     EWorkingTime.find({id: req.params.id})
     .then((user3)=>{
-        
+        console.log("length:=======",user3.length );
         for(let i=0; i<user3.length;i++)
         {
             if(parseInt(user3[i].month)===h)
